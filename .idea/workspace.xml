@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a3ab9e8-7d21-4576-980b-07cc55d65286" name="변경" comment="# README.md 수정">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java-study202309.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Hello.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/day01/ArrayBasic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/day01/Casting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/day01/DataType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/day01/VarScope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0a3ab9e8-7d21-4576-980b-07cc55d65286" name="변경" comment="# 자바 기본, 배열 기초">
+      <change afterPath="$PROJECT_DIR$/src/day01/ArrayCopy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/day01/ArrayDelete.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/day01/ArrayInsert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/day01/ArrayPop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/day01/ArrayPush.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/day01/ArraySearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/day01/StdIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,9 +101,9 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="애플리케이션.ArrayBasic">
-    <configuration name="ArrayBasic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day01.ArrayBasic" />
+  <component name="RunManager" selected="애플리케이션.StdIO">
+    <configuration name="ArrayDelete" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day01.ArrayDelete" />
       <module name="java-study202309" />
       <extension name="coverage">
         <pattern>
@@ -118,8 +115,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Casting" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day01.Casting" />
+    <configuration name="ArrayInsert" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day01.ArrayInsert" />
       <module name="java-study202309" />
       <extension name="coverage">
         <pattern>
@@ -131,8 +128,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataType" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day01.DataType" />
+    <configuration name="ArrayPush" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day01.ArrayPush" />
       <module name="java-study202309" />
       <extension name="coverage">
         <pattern>
@@ -144,27 +141,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Hello" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Hello" />
+    <configuration name="ArraySearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day01.ArraySearch" />
       <module name="java-study202309" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration name="StdIO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day01.StdIO" />
       <module name="java-study202309" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day01.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="애플리케이션.ArrayBasic" />
-        <item itemvalue="애플리케이션.Casting" />
-        <item itemvalue="애플리케이션.DataType" />
-        <item itemvalue="애플리케이션.Hello" />
-        <item itemvalue="애플리케이션.Main" />
+        <item itemvalue="애플리케이션.StdIO" />
+        <item itemvalue="애플리케이션.ArrayInsert" />
+        <item itemvalue="애플리케이션.ArraySearch" />
+        <item itemvalue="애플리케이션.ArrayDelete" />
+        <item itemvalue="애플리케이션.ArrayPush" />
       </list>
     </recent_temporary>
   </component>
@@ -177,7 +186,7 @@
       <option name="presentableId" value="Default" />
       <updated>1693545486412</updated>
       <workItem from="1693545488341" duration="1668000" />
-      <workItem from="1693612454059" duration="8382000" />
+      <workItem from="1693612454059" duration="14284000" />
     </task>
     <task id="LOCAL-00001" summary="# README.md 추가함">
       <option name="closed" value="true" />
@@ -203,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693546391718</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="# 자바 기본, 배열 기초">
+      <option name="closed" value="true" />
+      <created>1693621344116</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693621344119</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +253,7 @@
     <MESSAGE value="# README.md 추가함" />
     <MESSAGE value="# Main.java 작성함" />
     <MESSAGE value="# README.md 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="# README.md 수정" />
+    <MESSAGE value="# 자바 기본, 배열 기초" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 자바 기본, 배열 기초" />
   </component>
 </project>
