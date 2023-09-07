@@ -1,8 +1,6 @@
 package day02;
 
-
 import java.util.Arrays;
-
 
 public class MethodQuiz {
 
@@ -57,7 +55,7 @@ public class MethodQuiz {
         int newSize = foods.length + more;
         String[] temp = makeNew(newSize);
 
-        int loopCount = (more > 0) ? newSize - 1 : newSize;
+        int loopCount = (more > 0) ? newSize - more : newSize;
         for (int i = 0; i < loopCount; i++) {
             temp[i] = foods[i];
         }
