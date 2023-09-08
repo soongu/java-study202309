@@ -8,6 +8,8 @@ public class MemberView {
     Scanner sc;
     MemberRepository mr;
 
+    public static final int MAX_REGISTER = 4;
+
     public MemberView() {
         this.sc = new Scanner(System.in);
         this.mr = new MemberRepository();
@@ -19,12 +21,13 @@ public class MemberView {
      */
     void mainView() {
         System.out.println("\n##### 회원 관리 시스템 #####");
-        System.out.println("* 1. 회원 정보 등록하기");
+        if (mr.getNumberOfMember() < MAX_REGISTER) System.out.println("* 1. 회원 정보 등록하기");
         System.out.println("* 2. 개별회원 정보 조회하기");
         System.out.println("* 3. 전체회원 정보 조회하기");
         System.out.println("* 4. 회원 정보 수정하기");
         System.out.println("* 5. 회원 정보 삭제하기");
         System.out.println("* 6. 프로그램 끝내기");
+        if (mr.getNumberOfMember() < MAX_REGISTER) System.out.println("* 7. 탈퇴 회원 복구하기");
         System.out.println("=============================");
     }
 
@@ -38,9 +41,14 @@ public class MemberView {
 
             switch (menuNum) {
                 case "1":
+                    if (mr.getNumberOfMember() > MAX_REGISTER - 1) {
+                        System.out.println("# 더 이상 회원 등록이 불가능합니다.");
+                        continue;
+                    }
                     signUp();
                     break;
                 case "2":
+                    showDetail();
                     break;
                 case "3":
                     mr.showMembers();
@@ -50,6 +58,7 @@ public class MemberView {
                     changePassword();
                     break;
                 case "5":
+                    deleteMember();
                     break;
                 case "6":
                     String answer = input("# 정말로 종료합니까? [y/n] : ");
@@ -60,10 +69,78 @@ public class MemberView {
                         continue;
                     }
                     break;
+                case "7":
+                    if (mr.getNumberOfMember() > MAX_REGISTER - 1) {
+                        System.out.println("# 회원 복구가 불가능합니다.");
+                        continue;
+                    }
+                    restoreMember();
+                    break;
                 default:
                     System.out.println("\n# 메뉴 번호를 다시 입력하세요");
             }
         }
+    }
+
+    private void restoreMember() {
+
+        // 이메일을 입력받음
+        String email = input("# 복구 대상의 이메일: ");
+        // 삭제 대상 탐색
+        Member member = mr.findRemoveMemberByEmail(email);
+
+        if (member != null) {
+            // 패스워드 입력받기
+            String inputPassword = input("# 비밀번호를 입력: ");
+            if (mr.isMatchPassword(inputPassword, member.password)) {
+                mr.restoreMember(email);
+                System.out.println("\n# 회원 복구에 성공했습니다.");
+            } else {
+                System.out.println("\n# 비밀번호가 일치하지 않습니다.");
+            }
+        } else {
+            System.out.println("\n# 조회 결과가 없습니다.");
+        }
+        stop();
+    }
+
+    private void deleteMember() {
+        // 이메일을 입력받음
+        String email = input("# 삭제 대상의 이메일: ");
+
+        // 삭제 대상 탐색
+        Member member = mr.findMemberByEmail(email);
+
+        if (member != null) {
+            // 패스워드 입력받기
+            String inputPassword = input("# 비밀번호를 입력: ");
+            if (mr.isMatchPassword(inputPassword, member.password)) {
+                mr.removeMember(email);
+                System.out.println("\n# 회원 탈퇴에 성공했습니다.");
+                System.out.println("# 복구하시려면 복구메뉴를 이용해주세요.");
+            } else {
+                System.out.println("\n# 비밀번호가 일치하지 않습니다.");
+            }
+        } else {
+            System.out.println("\n# 조회 결과가 없습니다.");
+        }
+        stop();
+    }
+
+    private void showDetail() {
+        // 이메일을 입력받음
+        String email = input("# 조회 대상의 이메일: ");
+
+        // 조회 대상 탐색
+        Member member = mr.findMemberByEmail(email);
+
+        // 회원이 탐색됨
+        if (member != null) {
+            member.showDetailInfo();
+        } else {
+            System.out.println("\n# 조회 결과가 없습니다.");
+        }
+        stop();
     }
 
     private void changePassword() {

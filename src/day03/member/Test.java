@@ -14,12 +14,15 @@ public class Test {
 
         System.out.println("==================");
 
-        String email = "abc@def.com";
+        String email = "xxx@vvv.com";
         boolean flag1 = mr.isDuplicatedEmail(email);
         System.out.println("flag1 = " + flag1);
 
         Member foundMember = mr.findMemberByEmail(email);
         System.out.println("foundMember.inform() = " + foundMember.inform());
+
+        mr.removeMember(email);
+        mr.removeMember("ttt@yyy.com");
 
     }
 }

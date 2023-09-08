@@ -14,6 +14,7 @@ public class MemberRepository {
                 new Member(2, "fff@ggg.com", "4567", "팥죽이", Gender.FEMALE, 30),
                 new Member(3, "xxx@vvv.com", "8765", "카레맨", Gender.FEMALE, 45)
         };
+        this.removeMembers = new Member[0];
     }
 
     /**
@@ -63,12 +64,30 @@ public class MemberRepository {
      *           이메일이 일치하지 않으면 null 리턴
      */
     Member findMemberByEmail(String email) {
-        for (Member member : memberList) {
+        int index = findMemberListIndexByEmail(email);
+        return index >= 0 ? memberList[index] : null;
+    }
+    Member findRemoveMemberByEmail(String email) {
+        int index = findRemoveMembersIndexByEmail(email);
+        return index >= 0 ? removeMembers[index] : null;
+    }
+    int findMemberListIndexByEmail(String email) {
+        for (int i = 0; i < memberList.length; i++) {
+            Member member = memberList[i];
             if (email.equals(member.email)) {
-                return member;
+                return i;
             }
         }
-        return null;
+        return -1;
+    }
+    int findRemoveMembersIndexByEmail(String email) {
+        for (int i = 0; i < removeMembers.length; i++) {
+            Member member = removeMembers[i];
+            if (email.equals(member.email)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -80,6 +99,72 @@ public class MemberRepository {
     }
 
     /**
+     * 현재 저장된 회원수를 알려주는 메서드
+     */
+    int getNumberOfMember() {
+        return memberList.length;
+    }
+
+    /**
      * 회원탈퇴를 처리하는 메서드
      */
+    void removeMember(String email) {
+        // 기존 배열에서 삭제
+        int index = findMemberListIndexByEmail(email);
+        Member deletedMember = memberList[index];
+        for (int i = index; i < memberList.length - 1; i++) {
+            memberList[i] = memberList[i + 1];
+        }
+        Member[] temp = new Member[memberList.length - 1];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = memberList[i];
+        }
+        memberList = temp;
+
+        // 탈퇴대기 배열에 추가
+        temp = new Member[removeMembers.length + 1];
+        for (int i = 0; i < removeMembers.length; i++) {
+            temp[i] = removeMembers[i];
+        }
+        temp[temp.length - 1] = deletedMember;
+        removeMembers = temp;
+
+//        for (Member member : memberList) {
+//            System.out.println(member.inform());
+//        }
+//        System.out.println("==========================");
+//        for (Member removeMember : removeMembers) {
+//            System.out.println(removeMember.inform());
+//        }
+//        System.out.println("==========================\n");
+    }
+
+    // 패스워드 일치 확인
+    boolean isMatchPassword(String inputPassword, String originPassword) {
+        return inputPassword.equals(originPassword);
+    }
+
+    // 회원 복구처리
+    public void restoreMember(String email) {
+
+        // 탈퇴대기 배열에서 삭제
+        int index = findRemoveMembersIndexByEmail(email);
+        Member restoreMember = removeMembers[index];
+        for (int i = index; i < removeMembers.length - 1; i++) {
+            removeMembers[i] = removeMembers[i + 1];
+        }
+        Member[] temp = new Member[removeMembers.length - 1];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = removeMembers[i];
+        }
+        removeMembers = temp;
+
+        // 회원 배열에 추가
+        temp = new Member[memberList.length + 1];
+        for (int i = 0; i < memberList.length; i++) {
+            temp[i] = memberList[i];
+        }
+        temp[temp.length - 1] = restoreMember;
+        memberList = temp;
+    }
 }
