@@ -7,6 +7,13 @@ public class Count {
     public static int x; // 정적 필드 : 모든 객체가 공유
     public int y; // 인스턴스 필드 : 각 객체별로 관리
 
+    public Count() {
+
+    }
+    public Count(int y) {
+        this.y = y;
+    }
+
 
     // static메서드 안에서는 static필드만 직접 참조가능
     // 인스턴스 필드는 객체를 명시적으로 밝혀야 가능
